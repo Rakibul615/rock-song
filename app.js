@@ -7,6 +7,7 @@ const searchSongs = () => {
 }
 const displaySong = songs => {
     const songList = document.getElementById('song-list');
+    
     songList.innerHTML="";
     songs.forEach(song => {
         const songDiv = document.createElement('div');
