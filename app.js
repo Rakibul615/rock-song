@@ -4,7 +4,13 @@ const searchSongs = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displaySong(data.data))
+        .catch( displayError('something wrong!! try again later')) 
 }
+const displayError=error=>{
+    const errorShow = document.getElementById('error-show');
+    errorShow.innerHTML=error;
+}
+
 const displaySong = songs => {
     const songList = document.getElementById('song-list');
     
@@ -29,10 +35,11 @@ const displaySong = songs => {
 }
 const getLyric=(artist,title)=>{
     const url=` https://api.lyrics.ovh/v1/${artist}/${title}`;
-    //console.log(url);
+    
     fetch(url)
  .then(res=>res.json())
     .then(data=>displayLyric(data.lyrics))
+    .catch( displayError('something wrong!! We did not find this lyric try another one')) 
 }
 const displayLyric=lyric=>{
     const lyricDiv=document.getElementById('song-lyric');
